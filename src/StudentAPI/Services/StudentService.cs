@@ -25,6 +25,9 @@ public class StudentService
     public async Task<Student> GetByLastNameAsync(string lastName) => 
         await collection.Find(x => x.Lastname == lastName).FirstOrDefaultAsync();
 
+    public async Task<List<Student>> GetByAgeAsync(int min, int max) => 
+        await collection.Find(x => (x.Age >= min && x.Age <= max)).ToListAsync();
+
     public async Task CreateAsync(Student s) =>
         await collection.InsertOneAsync(s);
 

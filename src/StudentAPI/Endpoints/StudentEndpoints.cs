@@ -30,6 +30,12 @@ public static class StudentEndpoint
             return s != null ? Results.Ok(s) : Results.NotFound();
         });
 
+        group.MapGet("/filter/youngerThan/{age}", async (StudentService service, int age) =>
+        {
+            var s = await service.GetByAgeAsync(0, age-1);
+            return s != null ? Results.Ok(s) : Results.NotFound();
+        });
+
         group.MapPost("/", async (StudentService service, Student s) =>
         {
             await service.CreateAsync(s);
