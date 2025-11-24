@@ -30,6 +30,13 @@ public static class StudentEndpoint
             return Results.Created($"{route}/{s.Id}", s);
         });
 
+
+        group.MapPost("/insertMany/", async (StudentService service, Student[] students) =>
+        {
+            await service.CreateMany(students);
+            return Results.Created($"{route}/", students);
+        });
+
         group.MapPut("/", async (StudentService service, Student s, string id) =>
         {
             var student = await service.GetAsync(id);

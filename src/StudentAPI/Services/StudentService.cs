@@ -24,13 +24,13 @@ public class StudentService
 
     public async Task CreateAsync(Student s) =>
         await collection.InsertOneAsync(s);
+
+    public async Task CreateMany(Student[] students) =>
+        await collection.InsertManyAsync(students);
     
     public async Task UpdateAsync(string id, Student s) => 
         await collection.ReplaceOneAsync(x => x.Id == id, s);
     
     public async Task RemoveAsync(string id) =>
         await collection.DeleteOneAsync(x => x.Id == id);
-
-    /*public async Task CreateMany(Student[] s) =>
-        await collection.InsertManyAsync();*/
 }
