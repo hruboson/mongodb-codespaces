@@ -22,6 +22,9 @@ public class StudentService
     public async Task<Student> GetAsync(string id) => 
         await collection.Find(x => x.Id == id).FirstOrDefaultAsync();
 
+    public async Task<Student> GetByLastNameAsync(string lastName) => 
+        await collection.Find(x => x.Lastname == lastName).FirstOrDefaultAsync();
+
     public async Task CreateAsync(Student s) =>
         await collection.InsertOneAsync(s);
 

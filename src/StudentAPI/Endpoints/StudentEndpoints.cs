@@ -24,6 +24,12 @@ public static class StudentEndpoint
             return s != null ? Results.Ok(s) : Results.NotFound();
         });
 
+        group.MapGet("/filter/lastName/{lastName}", async (StudentService service, string lastName) =>
+        {
+            var s = await service.GetByLastNameAsync(lastName);
+            return s != null ? Results.Ok(s) : Results.NotFound();
+        });
+
         group.MapPost("/", async (StudentService service, Student s) =>
         {
             await service.CreateAsync(s);
