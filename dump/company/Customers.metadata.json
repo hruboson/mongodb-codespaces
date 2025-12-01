@@ -1,0 +1,1 @@
+{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"},{"v":{"$numberInt":"2"},"key":{"Name.Last Name":{"$numberInt":"1"},"Name.First Name":{"$numberInt":"1"}},"name":"LastNameCompoundIndex"}],"uuid":"923a5dee7b3441a6b2e4908cef94fead","collectionName":"Customers","type":"collection"}
